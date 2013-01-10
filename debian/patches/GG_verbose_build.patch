@@ -1,0 +1,18 @@
+Last-Update: 2013-01-07
+Author: Dmitry Smirnov <onlyjob@member.fsf.org>
+Forwarded: not-needed
+Description: enable verbose build
+
+--- a/FreeOrion/GG/CMakeLists.txt
++++ b/FreeOrion/GG/CMakeLists.txt
+@@ -4,9 +4,9 @@
+ enable_testing()
+ 
+ project(GiGi)
+ 
+-set(CMAKE_VERBOSE_MAKEFILE false)
++set(CMAKE_VERBOSE_MAKEFILE true)
+ 
+ ########################################
+ # Configuration                        #
+ ########################################

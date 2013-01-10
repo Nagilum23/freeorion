@@ -1,0 +1,20 @@
+Last-Update: 2013-01-08
+Author: Dmitry Smirnov <onlyjob@member.fsf.org>
+Forwarded: no
+Description: .desktop file corrections
+
+--- a/FreeOrion/freeorion.desktop
++++ b/FreeOrion/freeorion.desktop
+@@ -1,10 +1,9 @@
+ [Desktop Entry]
+ Name=FreeOrion
+ GenericName=FreeOrion
+-Comment=Run the FreeOrion client
++Comment=turn-based space empire and galactic conquest computer game (client)
+ Exec=freeorion
+ Icon=freeorion
+ Terminal=true
+ Type=Application
+ Categories=Game;StrategyGame;
+-URL=http://www.freeorion.org
+\ No newline at end of file

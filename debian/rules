@@ -1,0 +1,84 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+#export DEB_BUILD_MAINT_OPTIONS=hardening=+bindnow
+
+%:
+	dh $@ --parallel --max-parallel=4 --sourcedirectory=FreeOrion --with python2
+
+override_dh_clean:
+	dh_clean debian/*.png debian/*.xpm *.cfg FreeOrion/GG/GG/Config.h
+	$(RM) -r usr
+
+override_dh_auto_configure:
+	dh_auto_configure --sourcedirectory=FreeOrion/GG -- \
+            -DBUILD_DOCUMENTATION=off \
+            -DBUILD_TUTORIALS=off \
+            -DBUILD_OGRE_DRIVER=ON \
+            -DBUILD_OGRE_OIS_PLUGIN=ON \
+            -DLIB_SUFFIX=/freeorion \
+            -DCMAKE_SHARED_LINKER_FLAGS="-lltdl -Wl,--as-needed $(LDFLAGS)"
+#            -DBUILD_DEBUG=1
+	dh_auto_build     --sourcedirectory=FreeOrion/GG
+	dh_auto_install   --sourcedirectory=FreeOrion/GG --destdir=$(CURDIR)
+	-dh_auto_test      --sourcedirectory=FreeOrion/GG
+	dh_auto_clean     --sourcedirectory=FreeOrion/GG
+	#cd FreeOrion/GG \
+	#&& cmake  . \
+	#&& $(MAKE) install DESTDIR=$(CURDIR)/debian/tmp
+	CMAKE_INCLUDE_PATH=$(CURDIR)/usr/include \
+        CMAKE_LIBRARY_PATH=$(CURDIR)/usr/lib/freeorion \
+	dh_auto_configure
+
+override_dh_auto_build:
+	## generate icons
+	convert -monitor FreeOrion/FreeOrion.ico debian/freeorion.png
+	mv debian/freeorion-2.png debian/freeorion.png
+	convert -monitor debian/freeorion.png debian/freeorion.xpm
+	dh_auto_build
+
+#workaround for 'dpkg-shlibdeps: error: couldn't find library libGiGi*.so'
+override_dh_shlibdeps:
+	LD_LIBRARY_PATH="debian/freeorion/usr/lib/freeorion:$(LD_LIBRARY_PATH)" dh_shlibdeps
+
+override_dh_installchangelogs:
+	dh_installchangelogs FreeOrion/changelog.txt
+
+override_dh_install:
+	dh_install
+	find debian -type d -empty -delete
+	$(RM) debian/freeorion-data/usr/share/games/freeorion/LICENSE* \
+              debian/freeorion-data/usr/share/games/freeorion/COPYING
+
+override_dh_python2:
+	dh_python2 -pfreeorion-data --compile-all debian/freeorion-data/usr/share/games/freeorion/AI/*
+
+override_dh_builddeb:
+	dh_builddeb -- -Zxz
+
+## get-orig-source
+PKG := freeorion
+VER = $(shell dpkg-parsechangelog -l$(dir $(MAKEFILE_LIST))changelog | perl -ne 'print $$1 if m/Version:\s*([\d\.+svn]+)/')
+DATE = $(shell echo $(VER) | perl -ne 'print $$1 if m/\+svn(\d+)/')
+get-orig-source: $(PKG)_$(VER).orig.tar.xz
+	@
+
+$(PKG)_$(VER).orig.tar.xz:
+	svn checkout -r {$(DATE)} \
+	    http://freeorion.svn.sourceforge.net/svnroot/freeorion/trunk $(PKG)-$(VER) \
+	|| $(RM) -r $(PKG)-$(VER)
+	@echo "Clean-up..."
+	cd $(PKG)-$(VER) \
+        && find . -depth -name ".svn" -exec $(RM) -r '{}' \;\
+        && $(RM) -rv \
+            FreeOrion/GG/libltdl \
+            FreeOrion/loki_setup/setup.data/bin/Linux/x86/setup \
+            FreeOrion/loki_setup/setup.data/bin/Linux/x86/uninstall \
+            FreeOrion/loki_setup/setup.data/bin/Linux/x86/glibc-2.1/setup.gtk*
+	@echo "Packing..."
+	tar cJf "$(PKG)_$(VER).orig.tar.xz" "$(PKG)-$(VER)" --mtime=$(DATE) \
+	&& $(RM) -r "$(PKG)-$(VER)"
+	###&& $(RM) -r src/engine/wince files/stats/*.7z src/xmlccwrap/[gt]* .bzrignore

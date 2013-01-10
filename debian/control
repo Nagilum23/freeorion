@@ -1,0 +1,57 @@
+Source: freeorion
+Section: non-free/games
+Priority: optional
+Maintainer: Debian Games Team <pkg-games-devel@lists.alioth.debian.org>
+Build-Depends: debhelper (>= 9), imagemagick
+# GG (libgigi) dependencies:
+              ,cmake
+              ,libboost-all-dev
+              ,libdevil-dev
+              ,libfreetype6-dev
+              ,libgl1-mesa-dev
+              ,libglu1-mesa-dev
+              ,libjpeg8-dev
+              ,libltdl-dev
+              ,libogre-1.8-dev
+              ,libois-dev
+              ,libpng-dev
+              ,libsdl-dev
+              ,libtiff-dev
+              ,pkg-config
+# FreeOrion dependencies:
+              ,python-all-dev
+              ,libalut-dev
+              ,libbullet-dev
+              ,libogg-dev
+              ,libopenal-dev
+              ,libvorbis-dev
+# subversion is used in get-orig-source target only
+ ,subversion
+Standards-Version: 3.9.4
+Homepage: http://www.freeorion.org
+VCS-Git: git://anonscm.debian.org/pkg-games/freeorion.git
+VCS-Browser: http://anonscm.debian.org/gitweb/?p=pkg-games/freeorion.git
+
+Package: freeorion
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+ ,freeorion-data (= ${source:Version})
+Description: turn-based space empire and galactic conquest game
+ FreeOrion is a free, open source, turn-based space empire and galactic
+ conquest (4X) computer game being designed and built by the FreeOrion
+ project. FreeOrion is inspired by the tradition of the Master of Orion
+ games, but is not a clone or remake of that series or any other game.
+
+Package: freeorion-data
+Architecture: all
+Depends: ${misc:Depends}, ${python:Depends}
+ ,ttf-dejavu-core
+ ,ttf-dejavu-extra
+Suggests: freeorion
+Description: turn-based space empire and galactic conquest game -- data
+ FreeOrion is a free, open source, turn-based space empire and galactic
+ conquest (4X) computer game being designed and built by the FreeOrion
+ project. FreeOrion is inspired by the tradition of the Master of Orion
+ games, but is not a clone or remake of that series or any other game.
+ .
+ This package provides game data files.

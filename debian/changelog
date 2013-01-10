@@ -1,0 +1,5 @@
+freeorion (0.4.1+svn20130104-1) UNRELEASED; urgency=low
+
+  * Initial release [svn/5611] (Closes: #593339).
+
+ -- Dmitry Smirnov <onlyjob@member.fsf.org>  Thu, 10 Jan 2013 12:48:16 +1100

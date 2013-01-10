@@ -1,0 +1,6 @@
+GG_unbundle_libltdl.patch
+GG_verbose_build.patch
+desktop-file.patch
+path_to_cfg.patch
+ogre_path.patch
+spelling.patch

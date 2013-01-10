@@ -1,0 +1,30 @@
+Last-Update: 2013-01-10
+Author: Dmitry Smirnov <onlyjob@member.fsf.org>
+Forwarded: not-needed
+Description: put path to OGRE libs into ogre_plugins.cfg
+
+--- a/FreeOrion/GG/CMakeLists.txt
++++ b/FreeOrion/GG/CMakeLists.txt
+@@ -540,4 +540,10 @@
+     DISPLAY_NAME "Development"
+     DESCRIPTION "The development libs and headers needed to build an application that uses GG."
+     EXPANDED
+ )
++
++configure_file(
++    ${CMAKE_HOME_DIRECTORY}/../ogre_plugins.cfg
++    ${CMAKE_HOME_DIRECTORY}/../../ogre_plugins.cfg
++    @ONLY
++)
+--- a/FreeOrion/ogre_plugins.cfg
++++ b/FreeOrion/ogre_plugins.cfg
+@@ -1,8 +1,8 @@
+ # Ogre 3D engine plugins to load
+ 
+ # Plugin folder
+-PluginFolder=.
++PluginFolder=@OGRE_LIB_DIR@/OGRE-1.8.0
+ 
+ # Plugins
+ Plugin=RenderSystem_GL
+ Plugin=Plugin_ParticleFX

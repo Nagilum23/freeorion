@@ -1,0 +1,12 @@
+Bundled GG (libgigi):
+ At the moment GG is not feasible to maintain separately:
+  * it is used exclusively by freeorion.
+  * freeorion maintains fork of GG in freeorion's source tree.
+  * freeorion's GG fork is better maintained and need less patches.
+    * for example original libgigi doesn't build with gcc-4.7
+      (requires gcc-4.6) while from freeorion's source tree
+      it builds fine with gcc-4.7 and doesn't need "vector.patch".
+  * GG is not a proper library (more like plugin) and therefore
+    not suitable for packaging as standalone libgigi(-dev).
+
+ -- Dmitry Smirnov <onlyjob@member.fsf.org>  Thu, 10 Jan 2013 08:01:09 +1100

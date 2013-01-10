@@ -1,0 +1,66 @@
+Last-Update: 2013-01-08
+Author: Dmitry Smirnov <onlyjob@member.fsf.org>
+Forwarded: no
+Description: minor spelling corrections
+
+--- a/FreeOrion/AI/AIInterface.cpp
++++ b/FreeOrion/AI/AIInterface.cpp
+@@ -74,9 +74,9 @@
+     // updated
+     void InitResourcePoolsAndSupply() {
+         EmpireManager& manager = AIClientApp::GetApp()->Empires();
+ 
+-        // determine sytems where fleets can delivery supply, and groups of systems that can exchange resources
++        // determine systems where fleets can delivery supply, and groups of systems that can exchange resources
+         for (EmpireManager::iterator it = manager.begin(); it != manager.end(); ++it) {
+             Empire* empire = it->second;
+             empire->UpdateSupplyUnobstructedSystems();
+             empire->UpdateSystemSupplyRanges();
+--- a/FreeOrion/UI/MapWnd.cpp
++++ b/FreeOrion/UI/MapWnd.cpp
+@@ -5024,9 +5024,9 @@
+ 
+                 if (!remaining_system_to_explore || min_dist == DBL_MAX) {
+                     if (fleet->Fuel() == fleet->MaxFuel() && far_min_dist != DBL_MAX) {
+                         //we have full fuel and no unknown planet in range. We can go to a far system, but we will have to wait for resupply
+-                        Logger().debugStream() << "MapWnd::DispatchFleetsExploring : Next sytem for fleet " << fleet->ID() << " is " << far_system_id << ". Not enough fuel for the round trip";
++                        Logger().debugStream() << "MapWnd::DispatchFleetsExploring : Next system for fleet " << fleet->ID() << " is " << far_system_id << ". Not enough fuel for the round trip";
+                         systems_order_sent.insert(far_system_id);
+                         HumanClientApp::GetApp()->Orders().IssueOrder(OrderPtr(new FleetMoveOrder(empire_id, fleet->ID(), fleet->SystemID(), far_system_id)));
+                     } else {
+                         //no unknown planet in range. Let's try to get home to resupply
+@@ -5040,9 +5040,9 @@
+         }
+ 
+         if (min_dist != DBL_MAX) {
+             //there is an unexplored system rechable
+-            Logger().debugStream() << "MapWnd::DispatchFleetsExploring : Next sytem for fleet " << better_fleet_id << " is " << end_system_id;
++            Logger().debugStream() << "MapWnd::DispatchFleetsExploring : Next system for fleet " << better_fleet_id << " is " << end_system_id;
+             systems_order_sent.insert(end_system_id);
+             fleet_idle.erase(better_fleet_id);
+             HumanClientApp::GetApp()->Orders().IssueOrder(OrderPtr(new FleetMoveOrder(empire_id, better_fleet_id, start_system_id, end_system_id)));
+         } else {
+--- a/FreeOrion/universe/System.h
++++ b/FreeOrion/universe/System.h
+@@ -168,9 +168,9 @@
+ 
+     virtual void            SetOwner(int id) {};            ///< adding owner to system objects is a no-op
+     void                    UpdateOwnership();              ///< refresh set of empire ids which control planets in this system
+ 
+-    void                    SetLastTurnBattleHere(int turn);///< Sets the last turn there was a battle at this sytem
++    void                    SetLastTurnBattleHere(int turn);///< Sets the last turn there was a battle at this system
+ 
+     orbit_iterator          begin()                     { return m_objects.begin(); }   ///< begin iterator for all system objects
+     orbit_iterator          end()                       { return m_objects.end(); }     ///< end iterator for all system objects
+ 
+@@ -201,9 +201,9 @@
+     StarType        m_star;
+     int             m_orbits;
+     ObjectMultimap  m_objects;                      ///< each key value represents an orbit (-1 represents general system contents not in any orbit); there may be many or no objects at each orbit (including -1)
+     StarlaneMap     m_starlanes_wormholes;          ///< the ints represent the IDs of other connected systems; the bools indicate whether the connection is a wormhole (true) or a starlane (false)
+-    int             m_last_turn_battle_here;        ///< the turn on which there was last a battle in this sytem
++    int             m_last_turn_battle_here;        ///< the turn on which there was last a battle in this system
+ 
+     std::string     m_overlay_texture;              // intentionally not serialized; set by local effects
+     double          m_overlay_size;
+ 

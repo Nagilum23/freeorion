@@ -1,0 +1,6 @@
+#!/bin/sh
+
+#DATAPATH="--resource-dir /usr/share/games/freeorion"
+CSEGV=$(which catchsegv)
+LD_LIBRARY_PATH="/usr/lib/freeorion:${LD_LIBRARY_PATH}" \
+ ${CSEGV} /usr/lib/freeorion/freeorion $@
