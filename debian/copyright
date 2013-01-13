@@ -1,6 +1,6 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: FreeOrion
-Source: http://gigi.sourceforge.net/
+Source: https://sourceforge.net/projects/freeorion/
 Comment:
  ################################################################################
  ### This is incomplete file partially covering only files under FreeOrion/GG ###

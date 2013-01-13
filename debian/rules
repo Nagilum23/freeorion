@@ -81,4 +81,3 @@ $(PKG)_$(VER).orig.tar.xz:
 	@echo "Packing..."
 	tar cJf "$(PKG)_$(VER).orig.tar.xz" "$(PKG)-$(VER)" --mtime=$(DATE) \
 	&& $(RM) -r "$(PKG)-$(VER)"
-	###&& $(RM) -r src/engine/wince files/stats/*.7z src/xmlccwrap/[gt]* .bzrignore
