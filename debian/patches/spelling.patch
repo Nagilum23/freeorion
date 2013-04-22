@@ -1,12 +1,18 @@
-Last-Update: 2013-01-08
-Author: Dmitry Smirnov <onlyjob@member.fsf.org>
-Forwarded: no
-Description: minor spelling corrections
+From: Debian Games Team <pkg-games-devel@lists.alioth.debian.org>
+Date: Tue, 26 Mar 2013 22:00:33 +0100
+Subject: spelling
 
+---
+ FreeOrion/AI/AIInterface.cpp |    2 +-
+ FreeOrion/UI/MapWnd.cpp      |    4 ++--
+ FreeOrion/universe/System.h  |    4 ++--
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/FreeOrion/AI/AIInterface.cpp b/FreeOrion/AI/AIInterface.cpp
+index d017dd3..01e94b1 100644
 --- a/FreeOrion/AI/AIInterface.cpp
 +++ b/FreeOrion/AI/AIInterface.cpp
-@@ -74,9 +74,9 @@
-     // updated
+@@ -79,7 +79,7 @@ namespace {
      void InitResourcePoolsAndSupply() {
          EmpireManager& manager = AIClientApp::GetApp()->Empires();
  
@@ -15,11 +21,11 @@ Description: minor spelling corrections
          for (EmpireManager::iterator it = manager.begin(); it != manager.end(); ++it) {
              Empire* empire = it->second;
              empire->UpdateSupplyUnobstructedSystems();
-             empire->UpdateSystemSupplyRanges();
+diff --git a/FreeOrion/UI/MapWnd.cpp b/FreeOrion/UI/MapWnd.cpp
+index 06db768..34dea88 100644
 --- a/FreeOrion/UI/MapWnd.cpp
 +++ b/FreeOrion/UI/MapWnd.cpp
-@@ -5024,9 +5024,9 @@
- 
+@@ -5139,7 +5139,7 @@ void MapWnd::DispatchFleetsExploring() {
                  if (!remaining_system_to_explore || min_dist == DBL_MAX) {
                      if (fleet->Fuel() == fleet->MaxFuel() && far_min_dist != DBL_MAX) {
                          //we have full fuel and no unknown planet in range. We can go to a far system, but we will have to wait for resupply
@@ -28,9 +34,7 @@ Description: minor spelling corrections
                          systems_order_sent.insert(far_system_id);
                          HumanClientApp::GetApp()->Orders().IssueOrder(OrderPtr(new FleetMoveOrder(empire_id, fleet->ID(), fleet->SystemID(), far_system_id)));
                      } else {
-                         //no unknown planet in range. Let's try to get home to resupply
-@@ -5040,9 +5040,9 @@
-         }
+@@ -5155,7 +5155,7 @@ void MapWnd::DispatchFleetsExploring() {
  
          if (min_dist != DBL_MAX) {
              //there is an unexplored system rechable
@@ -39,11 +43,11 @@ Description: minor spelling corrections
              systems_order_sent.insert(end_system_id);
              fleet_idle.erase(better_fleet_id);
              HumanClientApp::GetApp()->Orders().IssueOrder(OrderPtr(new FleetMoveOrder(empire_id, better_fleet_id, start_system_id, end_system_id)));
-         } else {
+diff --git a/FreeOrion/universe/System.h b/FreeOrion/universe/System.h
+index 6483a8a..764e073 100644
 --- a/FreeOrion/universe/System.h
 +++ b/FreeOrion/universe/System.h
-@@ -168,9 +168,9 @@
- 
+@@ -169,7 +169,7 @@ public:
      virtual void            SetOwner(int id) {};            ///< adding owner to system objects is a no-op
      void                    UpdateOwnership();              ///< refresh set of empire ids which control planets in this system
  
@@ -52,9 +56,7 @@ Description: minor spelling corrections
  
      orbit_iterator          begin()                     { return m_objects.begin(); }   ///< begin iterator for all system objects
      orbit_iterator          end()                       { return m_objects.end(); }     ///< end iterator for all system objects
- 
-@@ -201,9 +201,9 @@
-     StarType        m_star;
+@@ -202,7 +202,7 @@ private:
      int             m_orbits;
      ObjectMultimap  m_objects;                      ///< each key value represents an orbit (-1 represents general system contents not in any orbit); there may be many or no objects at each orbit (including -1)
      StarlaneMap     m_starlanes_wormholes;          ///< the ints represent the IDs of other connected systems; the bools indicate whether the connection is a wormhole (true) or a starlane (false)
@@ -63,4 +65,3 @@ Description: minor spelling corrections
  
      std::string     m_overlay_texture;              // intentionally not serialized; set by local effects
      double          m_overlay_size;
- 

@@ -1,6 +1,9 @@
 #!/bin/sh
+ROOT=/usr/share/games/freeorion
+cd ${ROOT}
+echo -n "CWD: "
+pwd
 
-#DATAPATH="--resource-dir /usr/share/games/freeorion"
-CSEGV=$(which catchsegv)
-LD_LIBRARY_PATH="/usr/lib/freeorion:${LD_LIBRARY_PATH}" \
- ${CSEGV} /usr/lib/freeorion/freeorion $@
+DATAPATH="--resource-dir /usr/share/games/freeorion/default"
+
+/usr/lib/freeorion/freeorion ${DATAPATH} $@

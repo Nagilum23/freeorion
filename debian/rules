@@ -1,10 +1,8 @@
 #!/usr/bin/make -f
-# -*- makefile -*-
-
-# Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
-
 #export DEB_BUILD_MAINT_OPTIONS=hardening=+bindnow
+export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed
+DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
 
 %:
 	dh $@ --parallel --max-parallel=4 --sourcedirectory=FreeOrion --with python2
@@ -20,24 +18,23 @@ override_dh_auto_configure:
             -DBUILD_OGRE_DRIVER=ON \
             -DBUILD_OGRE_OIS_PLUGIN=ON \
             -DLIB_SUFFIX=/freeorion \
-            -DCMAKE_SHARED_LINKER_FLAGS="-lltdl -Wl,--as-needed $(LDFLAGS)"
-#            -DBUILD_DEBUG=1
+            -DCMAKE_SHARED_LINKER_FLAGS="-lltdl"
 	dh_auto_build     --sourcedirectory=FreeOrion/GG
 	dh_auto_install   --sourcedirectory=FreeOrion/GG --destdir=$(CURDIR)
-	-dh_auto_test      --sourcedirectory=FreeOrion/GG
+	dh_auto_test      --sourcedirectory=FreeOrion/GG
 	dh_auto_clean     --sourcedirectory=FreeOrion/GG
-	#cd FreeOrion/GG \
-	#&& cmake  . \
-	#&& $(MAKE) install DESTDIR=$(CURDIR)/debian/tmp
 	CMAKE_INCLUDE_PATH=$(CURDIR)/usr/include \
-        CMAKE_LIBRARY_PATH=$(CURDIR)/usr/lib/freeorion \
+	CMAKE_LIBRARY_PATH=$(CURDIR)/usr/lib/freeorion \
 	dh_auto_configure
 
 override_dh_auto_build:
 	## generate icons
 	convert -monitor FreeOrion/FreeOrion.ico debian/freeorion.png
 	mv debian/freeorion-2.png debian/freeorion.png
-	convert -monitor debian/freeorion.png debian/freeorion.xpm
+	convert -monitor -resize 32x32 debian/freeorion.png debian/freeorion.xpm
+	## use the correct path to the Ogre 1.8 installation
+	sed -i 's:PluginFolder=.:PluginFolder=/usr/lib/$(DEB_HOST_MULTIARCH)/OGRE-1.8.0:' \
+			$(CURDIR)/FreeOrion/ogre_plugins.cfg
 	dh_auto_build
 
 #workaround for 'dpkg-shlibdeps: error: couldn't find library libGiGi*.so'
@@ -50,8 +47,8 @@ override_dh_installchangelogs:
 override_dh_install:
 	dh_install
 	find debian -type d -empty -delete
-	$(RM) debian/freeorion-data/usr/share/games/freeorion/LICENSE* \
-              debian/freeorion-data/usr/share/games/freeorion/COPYING
+	$(RM) debian/freeorion-data/usr/share/games/freeorion/default/LICENSE* \
+              debian/freeorion-data/usr/share/games/freeorion/default/COPYING
 
 override_dh_python2:
 	dh_python2 -pfreeorion-data --compile-all debian/freeorion-data/usr/share/games/freeorion/AI/*
@@ -61,23 +58,25 @@ override_dh_builddeb:
 
 ## get-orig-source
 PKG := freeorion
-VER = $(shell dpkg-parsechangelog -l$(dir $(MAKEFILE_LIST))changelog | perl -ne 'print $$1 if m/Version:\s*([\d\.+svn]+)/')
-DATE = $(shell echo $(VER) | perl -ne 'print $$1 if m/\+svn(\d+)/')
+VER := $(shell dpkg-parsechangelog -l$(dir $(MAKEFILE_LIST))changelog | perl -ne 'print $$1 if m{Version:\s*(\d[\d.]*(?:\+svn[\d]\d*))}')
+REV := $(shell echo $(VER) | perl -ne 'print $$1 if m/\+svn(\d+)/')
+
 get-orig-source: $(PKG)_$(VER).orig.tar.xz
 	@
 
 $(PKG)_$(VER).orig.tar.xz:
-	svn checkout -r {$(DATE)} \
-	    http://freeorion.svn.sourceforge.net/svnroot/freeorion/trunk $(PKG)-$(VER) \
+	svn checkout -r $(REV) \
+	http://freeorion.svn.sourceforge.net/svnroot/freeorion/trunk $(PKG)-$(VER) \
 	|| $(RM) -r $(PKG)-$(VER)
 	@echo "Clean-up..."
 	cd $(PKG)-$(VER) \
-        && find . -depth -name ".svn" -exec $(RM) -r '{}' \;\
-        && $(RM) -rv \
-            FreeOrion/GG/libltdl \
-            FreeOrion/loki_setup/setup.data/bin/Linux/x86/setup \
-            FreeOrion/loki_setup/setup.data/bin/Linux/x86/uninstall \
-            FreeOrion/loki_setup/setup.data/bin/Linux/x86/glibc-2.1/setup.gtk*
+	&& find . -depth -name ".svn" -exec $(RM) -r '{}' \; \
+	&& $(RM) -r -v \
+		FreeOrion/GG/libltdl \
+		FreeOrion/loki_setup \
+		FreeOrion/linux-static \
+		FreeOrion/cmake/FindBullet.cmake \
+		FreeOrion/Installer
 	@echo "Packing..."
-	tar cJf "$(PKG)_$(VER).orig.tar.xz" "$(PKG)-$(VER)" --mtime=$(DATE) \
+	tar caf "$(PKG)_$(VER).orig.tar.xz" "$(PKG)-$(VER)" \
 	&& $(RM) -r "$(PKG)-$(VER)"

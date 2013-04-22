@@ -1,7 +1,10 @@
 Source: freeorion
-Section: non-free/games
+Section: games
 Priority: optional
 Maintainer: Debian Games Team <pkg-games-devel@lists.alioth.debian.org>
+Uploaders:
+ Dimitry Smirnov <onlyjob@debian.org>,
+ Markus Koschany <apo@gambaru.de>
 Build-Depends: debhelper (>= 9), imagemagick
 # GG (libgigi) dependencies:
               ,cmake
@@ -19,14 +22,12 @@ Build-Depends: debhelper (>= 9), imagemagick
               ,libtiff-dev
               ,pkg-config
 # FreeOrion dependencies:
-              ,python-all-dev
+              ,python
               ,libalut-dev
               ,libbullet-dev
               ,libogg-dev
               ,libopenal-dev
               ,libvorbis-dev
-# subversion is used in get-orig-source target only
- ,subversion
 Standards-Version: 3.9.4
 Homepage: http://www.freeorion.org
 VCS-Git: git://anonscm.debian.org/pkg-games/freeorion.git
@@ -34,24 +35,36 @@ VCS-Browser: http://anonscm.debian.org/gitweb/?p=pkg-games/freeorion.git
 
 Package: freeorion
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}
- ,freeorion-data (= ${source:Version})
+Depends:
+ freeorion-data (= ${source:Version}),
+ ${misc:Depends},
+ ${shlibs:Depends}
 Description: turn-based space empire and galactic conquest game
- FreeOrion is a free, open source, turn-based space empire and galactic
- conquest (4X) computer game being designed and built by the FreeOrion
- project. FreeOrion is inspired by the tradition of the Master of Orion
- games, but is not a clone or remake of that series or any other game.
+ FreeOrion is a turn-based space empire and galactic conquest (4X) computer
+ game being designed and built by the FreeOrion project. FreeOrion is inspired
+ by the tradition of the Master of Orion games, but is not a clone or remake of
+ that series or any other game.
+ .
+ The game is about the construction of a living, breathing universe in a grand
+ campaign model. You can develop your own galactic empire and explore new star
+ systems with your fleets as one of several unique human or alien species.
+ Colonization of new worlds, researching new technology, managing your
+ resources and defending your planets against the AI or other human players on
+ a galactic scale are your main objectives.
 
 Package: freeorion-data
 Architecture: all
-Depends: ${misc:Depends}, ${python:Depends}
- ,ttf-dejavu-core
- ,ttf-dejavu-extra
+Depends:
+ ${misc:Depends},
+ ${python:Depends},
+ ttf-dejavu-core,
+ ttf-dejavu-extra
 Suggests: freeorion
 Description: turn-based space empire and galactic conquest game -- data
- FreeOrion is a free, open source, turn-based space empire and galactic
- conquest (4X) computer game being designed and built by the FreeOrion
- project. FreeOrion is inspired by the tradition of the Master of Orion
- games, but is not a clone or remake of that series or any other game.
+ FreeOrion is a turn-based space empire and galactic conquest (4X) computer
+ game being designed and built by the FreeOrion project. FreeOrion is inspired
+ by the tradition of the Master of Orion games, but is not a clone or remake of
+ that series or any other game.
  .
- This package provides game data files.
+ This package provides game data files for FreeOrion, hundreds of unique
+ designs for ingame icons, ships and planets and an immersive music score.

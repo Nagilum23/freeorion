@@ -1,12 +1,18 @@
-Last-Update: 2013-01-07
-Author: Dmitry Smirnov <onlyjob@member.fsf.org>
-Forwarded: no
-Description: removes bundled "libltdl-dev" in order to use system one.
+From: Debian Games Team <pkg-games-devel@lists.alioth.debian.org>
+Date: Tue, 26 Mar 2013 22:00:32 +0100
+Subject: GG_unbundle_libltdl
 
+---
+ FreeOrion/GG/CMakeLists.txt       |   33 ---------------------------------
+ FreeOrion/GG/GG/PluginInterface.h |    6 +-----
+ FreeOrion/GG/src/CMakeLists.txt   |    9 ---------
+ 3 files changed, 1 insertion(+), 47 deletions(-)
+
+diff --git a/FreeOrion/GG/CMakeLists.txt b/FreeOrion/GG/CMakeLists.txt
+index e35ecec..7cb4599 100644
 --- a/FreeOrion/GG/CMakeLists.txt
 +++ b/FreeOrion/GG/CMakeLists.txt
-@@ -230,41 +230,8 @@
-     message(FATAL_ERROR "Freetype library not found.")
+@@ -231,39 +231,6 @@ else ()
  endif ()
  
  
@@ -46,11 +52,28 @@ Description: removes bundled "libltdl-dev" in order to use system one.
  configure_file(
      ${CMAKE_HOME_DIRECTORY}/cmake/Config.h.in
      ${CMAKE_HOME_DIRECTORY}/GG/Config.h
-     @ONLY
+diff --git a/FreeOrion/GG/GG/PluginInterface.h b/FreeOrion/GG/GG/PluginInterface.h
+index dbcefdf..67ce03b 100644
+--- a/FreeOrion/GG/GG/PluginInterface.h
++++ b/FreeOrion/GG/GG/PluginInterface.h
+@@ -32,11 +32,7 @@
+ 
+ #include <GG/GUI.h>
+ 
+-#if defined(__APPLE__) && defined(__MACH__)
+-# include "../libltdl/ltdl.h"
+-#else
+-# include <GG/ltdl.h>
+-#endif
++#include <ltdl.h>
+ 
+ #include <string>
+ 
+diff --git a/FreeOrion/GG/src/CMakeLists.txt b/FreeOrion/GG/src/CMakeLists.txt
+index dcd42fd..c1b215b 100644
 --- a/FreeOrion/GG/src/CMakeLists.txt
 +++ b/FreeOrion/GG/src/CMakeLists.txt
-@@ -49,10 +49,8 @@
-     dialogs/ColorDlg.cpp
+@@ -50,8 +50,6 @@ set(THIS_LIB_SOURCES
      dialogs/FileDlg.cpp
      dialogs/ThreeButtonDlg.cpp
  
@@ -59,9 +82,7 @@ Description: removes bundled "libltdl-dev" in order to use system one.
      adobe/adam.cpp
      adobe/adam_evaluate.cpp
      adobe/adam_parser.cpp
-     adobe/any_regular.cpp
-@@ -161,15 +159,8 @@
-         adobe/future/widgets/sources/platform_window.cpp
+@@ -162,13 +160,6 @@ if (BUILD_EXPERIMENTAL_EVE_SUPPORT)
      )
  endif ()
  
@@ -75,21 +96,3 @@ Description: removes bundled "libltdl-dev" in order to use system one.
  set(THIS_LIB_LINK_LIBS ${Boost_LIBRARIES} ${OPENGL_LIBRARIES} ${FREETYPE_LIBRARIES})
  if (USE_DEVIL)
      list(APPEND THIS_LIB_LINK_LIBS ${IL_LIBRARY} ${ILUT_LIBRARY})
- else ()
---- a/FreeOrion/GG/GG/PluginInterface.h
-+++ b/FreeOrion/GG/GG/PluginInterface.h
-@@ -31,13 +31,9 @@
- #define _GG_PluginInterface_h_
- 
- #include <GG/GUI.h>
- 
--#if defined(__APPLE__) && defined(__MACH__)
--# include "../libltdl/ltdl.h"
--#else
--# include <GG/ltdl.h>
--#endif
-+#include <ltdl.h>
- 
- #include <string>
- 
- 

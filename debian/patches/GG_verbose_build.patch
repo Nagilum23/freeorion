@@ -1,12 +1,16 @@
-Last-Update: 2013-01-07
-Author: Dmitry Smirnov <onlyjob@member.fsf.org>
-Forwarded: not-needed
-Description: enable verbose build
+From: Debian Games Team <pkg-games-devel@lists.alioth.debian.org>
+Date: Tue, 26 Mar 2013 22:00:33 +0100
+Subject: GG_verbose_build
 
+---
+ FreeOrion/GG/CMakeLists.txt |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/FreeOrion/GG/CMakeLists.txt b/FreeOrion/GG/CMakeLists.txt
+index 7cb4599..f4fca80 100644
 --- a/FreeOrion/GG/CMakeLists.txt
 +++ b/FreeOrion/GG/CMakeLists.txt
-@@ -4,9 +4,9 @@
- enable_testing()
+@@ -5,7 +5,7 @@ enable_testing()
  
  project(GiGi)
  
@@ -15,4 +19,3 @@ Description: enable verbose build
  
  ########################################
  # Configuration                        #
- ########################################

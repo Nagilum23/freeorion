@@ -1,12 +1,16 @@
-Last-Update: 2013-01-10
-Author: Dmitry Smirnov <onlyjob@member.fsf.org>
-Forwarded: not-needed
-Description: open .cfg file from where it is installed (not from CWD)
+From: Debian Games Team <pkg-games-devel@lists.alioth.debian.org>
+Date: Tue, 26 Mar 2013 22:00:33 +0100
+Subject: path_to_cfg
 
+---
+ FreeOrion/client/human/chmain.cpp |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/FreeOrion/client/human/chmain.cpp b/FreeOrion/client/human/chmain.cpp
+index 4a6ba8d..40e3917 100644
 --- a/FreeOrion/client/human/chmain.cpp
 +++ b/FreeOrion/client/human/chmain.cpp
-@@ -214,9 +214,9 @@
-         log_manager = new LogManager();
+@@ -215,7 +215,7 @@ int mainSetupAndRunOgre() {
  
  #ifndef FREEORION_WIN32
          log_manager->createLog((GetUserDir() / "ogre.log").string(), true, false);
@@ -15,4 +19,3 @@ Description: open .cfg file from where it is installed (not from CWD)
          // this line is needed on some Linux systems which otherwise will crash with
          // errors about GLX_icon.png being missing.
          Ogre::ResourceGroupManager::getSingleton().addResourceLocation((ClientUI::ArtDir() / ".").string(),
-                                                                        "FileSystem", "General");

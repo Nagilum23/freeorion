@@ -1,8 +1,13 @@
-Last-Update: 2013-01-08
-Author: Dmitry Smirnov <onlyjob@member.fsf.org>
-Forwarded: no
-Description: .desktop file corrections
+From: Debian Games Team <pkg-games-devel@lists.alioth.debian.org>
+Date: Tue, 26 Mar 2013 22:00:33 +0100
+Subject: desktop-file
 
+---
+ FreeOrion/freeorion.desktop |    3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/FreeOrion/freeorion.desktop b/FreeOrion/freeorion.desktop
+index 161cf57..a758cf8 100644
 --- a/FreeOrion/freeorion.desktop
 +++ b/FreeOrion/freeorion.desktop
 @@ -1,10 +1,9 @@
