@@ -77,6 +77,7 @@ $(PKG)_$(VER).orig.tar.xz:
 		FreeOrion/linux-static \
 		FreeOrion/cmake/FindBullet.cmake \
 		FreeOrion/OIS \
+		FreeOrion/client/human/OgrePlugins \
 		FreeOrion/Installer \
 		FreeOrion/msvc2010 \
 		FreeOrion/Xcode \
