@@ -4,3 +4,4 @@ desktop-file.patch
 path_to_cfg.patch
 ogre_path.patch
 spelling.patch
+no_static.patch
