@@ -1,9 +1,10 @@
-#!/bin/sh
+#!/bin/sh -e
+
 ROOT=/usr/share/games/freeorion
 cd ${ROOT}
-echo -n "CWD: "
+printf 'CWD: '
 pwd
 
 DATAPATH="--resource-dir /usr/share/games/freeorion/default"
 
-/usr/lib/freeorion/freeorion ${DATAPATH} $@
+/usr/lib/freeorion/freeorion ${DATAPATH} "$@"
