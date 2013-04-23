@@ -36,7 +36,8 @@ VCS-Browser: http://anonscm.debian.org/gitweb/?p=pkg-games/freeorion.git
 Package: freeorion
 Architecture: any
 Depends:
- freeorion-data (= ${source:Version}),
+ freeorion-data (>= ${source:Upstream-Version}),
+ freeorion-data (<= ${source:Version}),
  ${misc:Depends},
  ${shlibs:Depends}
 Description: turn-based space empire and galactic conquest game
