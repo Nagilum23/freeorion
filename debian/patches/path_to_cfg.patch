@@ -1,7 +1,10 @@
-From: Debian Games Team <pkg-games-devel@lists.alioth.debian.org>
+From: Dmitry Smirnov <onlyjob@member.fsf.org>
 Date: Tue, 26 Mar 2013 22:00:33 +0100
 Subject: path_to_cfg
 
+Open .cfg file from where it is installed (not from CWD)
+
+Forwarded: not-needed
 ---
  FreeOrion/client/human/chmain.cpp |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
