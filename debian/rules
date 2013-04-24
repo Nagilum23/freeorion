@@ -39,7 +39,7 @@ override_dh_auto_build:
 
 #workaround for 'dpkg-shlibdeps: error: couldn't find library libGiGi*.so'
 override_dh_shlibdeps:
-	LD_LIBRARY_PATH="debian/freeorion/usr/lib/freeorion:$(LD_LIBRARY_PATH)" dh_shlibdeps
+	LD_LIBRARY_PATH="$(CURDIR)/usr/lib/freeorion:$(LD_LIBRARY_PATH)" dh_shlibdeps
 
 override_dh_installchangelogs:
 	dh_installchangelogs FreeOrion/changelog.txt
