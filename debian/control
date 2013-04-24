@@ -3,7 +3,7 @@ Section: games
 Priority: optional
 Maintainer: Debian Games Team <pkg-games-devel@lists.alioth.debian.org>
 Uploaders:
- Dimitry Smirnov <onlyjob@debian.org>,
+ Dmitry Smirnov <onlyjob@debian.org>,
  Markus Koschany <apo@gambaru.de>
 Build-Depends: debhelper (>= 9), imagemagick
 # GG (libgigi) dependencies:
