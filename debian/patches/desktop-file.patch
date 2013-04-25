@@ -15,7 +15,7 @@ index 161cf57..817d453 100644
  Name=FreeOrion
  GenericName=FreeOrion
 -Comment=Run the FreeOrion client
-+Comment=turn-based space empire and galactic conquest computer game (client)
++Comment=turn-based space empire and galactic conquest game (client)
  Exec=freeorion
  Icon=freeorion
  Terminal=true
