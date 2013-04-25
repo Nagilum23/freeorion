@@ -2,6 +2,10 @@ From: Debian Games Team <pkg-games-devel@lists.alioth.debian.org>
 Date: Tue, 26 Mar 2013 22:00:33 +0100
 Subject: desktop-file
 
+Create a valid desktop file.
+
+Forwarded: http://sourceforge.net/tracker/?func=detail&aid=3611819&group_id=75752&atid=544942
+
 ---
  FreeOrion/freeorion.desktop |    4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)

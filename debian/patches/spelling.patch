@@ -2,6 +2,10 @@ From: Dmitry Smirnov <onlyjob@member.fsf.org>
 Date: Tue, 26 Mar 2013 22:00:33 +0100
 Subject: spelling
 
+Replace sytems with systems.
+
+Forwarded: http://sourceforge.net/tracker/?func=detail&aid=3611820&group_id=75752&atid=544942
+
 ---
  FreeOrion/AI/AIInterface.cpp |    2 +-
  FreeOrion/UI/MapWnd.cpp      |    4 ++--
