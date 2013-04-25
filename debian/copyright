@@ -8,7 +8,7 @@ Copyright: The FreeOrion project
 License: GPL-2
 
 Files: debian/*
-Copyright: 2013 Dmitry Smirnov <onlyjob@member.fsf.org>
+Copyright: 2013 Dmitry Smirnov <onlyjob@debian.org>
 License: LGPL-2.1+
 
 Files: *.png
