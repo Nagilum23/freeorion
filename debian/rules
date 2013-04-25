@@ -3,6 +3,7 @@
 #export DEB_BUILD_MAINT_OPTIONS=hardening=+bindnow
 export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed
 DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
+PKG := freeorion
 
 %:
 	dh $@ --parallel --max-parallel=4 --sourcedirectory=FreeOrion --with python2
@@ -32,9 +33,6 @@ override_dh_auto_build:
 	convert -monitor FreeOrion/FreeOrion.ico debian/freeorion.png
 	mv debian/freeorion-2.png debian/freeorion.png
 	convert -monitor -resize 32x32 debian/freeorion.png debian/freeorion.xpm
-	## use the correct path to the Ogre 1.8 installation
-	sed -i 's:PluginFolder=.:PluginFolder=/usr/lib/$(DEB_HOST_MULTIARCH)/OGRE-1.8.0:' \
-			$(CURDIR)/FreeOrion/ogre_plugins.cfg
 	dh_auto_build
 
 #workaround for 'dpkg-shlibdeps: error: couldn't find library libGiGi*.so'
@@ -49,6 +47,9 @@ override_dh_install:
 	find debian -type d -empty -delete
 	$(RM) debian/freeorion-data/usr/share/games/freeorion/default/LICENSE* \
               debian/freeorion-data/usr/share/games/freeorion/default/COPYING
+	## use the correct path to the Ogre 1.8 installation
+	sed -i 's:PluginFolder=\.:PluginFolder=/usr/lib/$(DEB_HOST_MULTIARCH)/OGRE-1.8.0:' \
+			$(CURDIR)/debian/$(PKG)/usr/lib/$(PKG)/ogre_plugins.cfg
 
 override_dh_python2:
 	dh_python2 -pfreeorion-data --compile-all debian/freeorion-data/usr/share/games/freeorion/AI/*
@@ -57,7 +58,6 @@ override_dh_builddeb:
 	dh_builddeb -- -Zxz
 
 ## get-orig-source
-PKG := freeorion
 VER := $(shell dpkg-parsechangelog -l$(dir $(MAKEFILE_LIST))changelog | perl -ne 'print $$1 if m{Version:\s*(\d[\d.]*(?:\+svn[\d]\d*))}')
 REV := $(shell echo $(VER) | perl -ne 'print $$1 if m/\+svn(\d+)/')
 
