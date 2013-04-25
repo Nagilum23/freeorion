@@ -28,6 +28,8 @@ Build-Depends: debhelper (>= 9), imagemagick
               ,libogg-dev
               ,libopenal-dev
               ,libvorbis-dev
+# subversion is used in get-orig-source target only:
+              ,subversion
 Standards-Version: 3.9.4
 Homepage: http://www.freeorion.org
 VCS-Git: git://anonscm.debian.org/pkg-games/freeorion.git
