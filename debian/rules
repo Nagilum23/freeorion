@@ -52,7 +52,7 @@ override_dh_install:
 			$(CURDIR)/debian/$(PKG)/usr/lib/$(PKG)/ogre_plugins.cfg
 
 override_dh_python2:
-	dh_python2 -pfreeorion-data --compile-all debian/freeorion-data/usr/share/games/freeorion/AI/*
+	dh_python2 -pfreeorion-data /usr/share/games
 
 override_dh_builddeb:
 	dh_builddeb -- -Zxz
