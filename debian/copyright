@@ -1,95 +1,135 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: FreeOrion
 Source: https://sourceforge.net/projects/freeorion/
-Comment:
 
 Files: *
 Copyright: The FreeOrion project
 License: GPL-2
-
-Files: debian/*
-Copyright: 2013 Dmitry Smirnov <onlyjob@debian.org>
-License: LGPL-2.1+
+Comment:
+ For a complete list of contributors for FreeOrion, please refer to the in-game
+ "Credits" menu.
 
 Files: *.png
        *.wav
        *.txt
        *.mesh
-Copyright: 2003-2008 T. Zachary Laine
+       *.frag
+       *.material
+       *.vert
+       *.compositor
+Copyright: The FreeOrion project
 License: CC-BY-SA-3.0
 Comment:
- All artwork, music and sounds, and in-game text are released under the
- the Creative Commons Attribution-ShareAlike 3.0 licence.
+ This includes artwork, music, sounds, text that determines how art, music or
+ sound is played or displayed in game, game content such as technologies,
+ buildings, specials and their associated in-game text, and the scripts that
+ determine their in-game functionality. Game content scripts are also licensed
+ under the GNU General Public License, Version 2.
+ .
+ For a complete list of contributors for FreeOrion, please refer to the in-game
+ "Credits" menu.
+ .
+ These files are considered to be the preferred form for modifications by the
+ FreeOrion project. See also this official thread at
+ http://www.freeorion.org/forum/viewtopic.php?f=10&t=7440
 
 Files: FreeOrion/GG/*
-Copyright: 2003-2008 T. Zachary Laine
+Copyright: 2003-2008, T. Zachary Laine
 License: LGPL-2.1+
-
-Files: FreeOrion/GG/src/DefaultFont.h
-Copyright: 2003-2008 T. Zachary Laine
-           2003      Bitstream, Inc
-License: LGPL-2.1+
-Comment: contains embedded Vera font(s) licensed as below:
- Copyright for Vera*.ttf:
- Copyright (c) 2003 by Bitstream, Inc. All Rights Reserved. Bitstream
- Vera is a trademark of Bitstream, Inc.
- .
- Permission is hereby granted, free of charge, to any person obtaining
- a copy of the fonts accompanying this license ("Fonts") and associated
- documentation files (the "Font Software"), to reproduce and distribute
- the Font Software, including without limitation the rights to use,
- copy, merge, publish, distribute, and/or sell copies of the Font
- Software, and to permit persons to whom the Font Software is furnished
- to do so, subject to the following conditions:
- .
- The above copyright and trademark notices and this permission notice
- shall be included in all copies of one or more of the Font Software
- typefaces.
- .
- The Font Software may be modified, altered, or added to, and in
- particular the designs of glyphs or characters in the Fonts may be
- modified and additional glyphs or characters may be added to the
- Fonts, only if the fonts are renamed to names not containing either
- the words "Bitstream" or the word "Vera".
- .
- This License becomes null and void to the extent applicable to Fonts
- or Font Software that has been modified and is distributed under the
- "Bitstream Vera" names.
- .
- The Font Software may be sold as part of a larger software package but
- no copy of one or more of the Font Software typefaces may be sold by
- itself.
- .
- THE FONT SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
- EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF
- MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT
- OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL
- BITSTREAM OR THE GNOME FOUNDATION BE LIABLE FOR ANY CLAIM, DAMAGES OR
- OTHER LIABILITY, INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL,
- OR CONSEQUENTIAL DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR
- OTHERWISE, ARISING FROM, OUT OF THE USE OR INABILITY TO USE THE FONT
- SOFTWARE OR FROM OTHER DEALINGS IN THE FONT SOFTWARE.
- .
- Except as contained in this notice, the names of Gnome, the Gnome
- Foundation, and Bitstream Inc., shall not be used in advertising or
- otherwise to promote the sale, use or other dealings in this Font
- Software without prior written authorization from the Gnome Foundation
- or Bitstream Inc., respectively. For further information, contact:
- fonts at gnome dot org.
 
 Files: FreeOrion/GG/GG/src/adobe/*
-Copyright: 2005 Adobe Systems Incorporated
+       FreeOrion/GG/test/asl_*
+Copyright: 2005-2007, Adobe Systems Incorporated
 License: Expat
 
 Files: FreeOrion/GG/GG/glext.h
-Copyright: 1991-2004 Silicon Graphics, Inc
-License: SGI-FreeB
-Comment: non-DFSG
+Copyright: 1991-2004, Silicon Graphics, Inc
+License: SGI-Free-Software-License-B-2.0
+Comment:
+ The file glext.h was released under Version 1.1 of SGI's Free Software License
+ which is considered non-free by the Debian Project. However SGI revised the
+ license and replaced it with version 2.0 which is DFSG free. Paragraph 8
+ grants the following right: "Once Covered Code has been published under a
+ particular version of the License, Recipient may, for the duration of the
+ license, continue to use it under the terms of that version, or choose to use
+ such Covered Code under the terms of any subsequent version published bi SGI."
+ Therefore Debian uses version 2.0.
 
 Files: FreeOrion/GG/src/GIL/*
-Copyright: 2005-2007 Adobe Systems Incorporated
-           2008      T. Zachary Laine
+Copyright: 2005-2007, Adobe Systems Incorporated
+           2008,      T. Zachary Laine
 License: BSL-1.0
+
+Files: FreeOrion/UI/EntityRenderer.cpp
+       FreeOrion/UI/PagedGeometry/*
+Copyright: 2006, John Judnich
+License: Zlib
+
+Files: FreeOrion/combat/OpenSteer/AbstractVehicle.h
+       FreeOrion/combat/OpenSteer/LocalSpace.h
+       FreeOrion/combat/OpenSteer/Obstacle.cpp
+       FreeOrion/combat/OpenSteer/Obstacle.h
+       FreeOrion/combat/OpenSteer/Proximity.h
+       FreeOrion/combat/OpenSteer/SimpleVehicle.cpp
+       FreeOrion/combat/OpenSteer/SimpleVehicle.h
+       FreeOrion/combat/OpenSteer/StandardTypes.h
+       FreeOrion/combat/OpenSteer/SteerLibrary.h
+       FreeOrion/combat/OpenSteer/UnusedParameter.h
+       FreeOrion/combat/OpenSteer/Utilities.h
+       FreeOrion/combat/OpenSteer/Vec3.cpp
+       FreeOrion/combat/OpenSteer/Vec3.h
+       FreeOrion/combat/OpenSteer/Vec3Utilities.cpp
+       FreeOrion/combat/OpenSteer/Vec3Utilities.h
+Copyright: 2002-2005, Sony Computer Entertainment America
+License: Expat
+
+Files: FreeOrion/GG/GG/utf8/checked.h
+       FreeOrion/GG/GG/utf8/core.h
+       FreeOrion/GG/GG/utf8/unchecked.h
+Copyright: 2006, Nemanja Trifunovic
+License: Expat
+
+Files: FreeOrion/UI/CollisionMeshConverter.cpp
+       FreeOrion/UI/CollisionMeshConverter.h
+Copyright: 2007, Tuan Kuranes <tuan.kuranes@gmail.com>
+License: LGPL-2.1+
+
+Files: FreeOrion/util/GZStream.cpp
+       FreeOrion/util/GZStream.h
+Copyright: 2001, Deepak Bandyopadhyay, Lutz Kettner
+License: LGPL-2.1+
+
+Files: FreeOrion/util/XMLDoc.cpp
+Copyright: 2001, Daniel C. Nuffer
+           2006, T. Zachary Laine
+License: LGPL-2.1+
+
+Files: FreeOrion/UI/PagedGeometry/MersenneTwister.h
+Copyright: 1997-2002, Makoto Matsumoto and Takuji Nishimura
+           2000-2009, Richard J. Wagner
+License: BSD-3-clause
+
+Files: FreeOrion/log4cpp/*
+Copyright:  2000-2001, LifeLine Networks BV (www.lifeline.nl)
+            2000-2001, Bastiaan Bakker
+            2000,      Marc Welz
+            2001,      Glen Scott
+            2001,      Walter Stroebel
+            2002,      Log4cpp Project
+            2002,      Bastiaan Bakker
+            2002,      Emiliano Martin <emilianomc@terra.es>
+            2005,      Francis ANDRE.
+License: LGPL-2.1+
+
+Files: debian/*
+Copyright: 2013, Dmitry Smirnov <onlyjob@debian.org>
+           2013, Markus Koschany <apo@gambaru.de>
+License: GNU-All-Permisive-License
+ Copying and distribution of this file, with or without modification,
+ are permitted in any medium without royalty provided the copyright
+ notice and this notice are preserved. This file is offered as-is,
+ without any warranty.
+
 
 License: GPL-2
  This package is free software; you can redistribute it and/or modify
@@ -107,19 +147,48 @@ License: GPL-2
  On Debian systems, the complete text of the GNU General
  Public License version 2 can be found in "/usr/share/common-licenses/GPL-2".
 
-
-License: SGI-FreeB
- SGI FREE SOFTWARE LICENSE B (Version 2.0, Sept. 18, 2008)
- Copyright (C) [dates of first publication] Silicon Graphics, Inc. All Rights Reserved.
- Permission is hereby granted, free of charge, to any person obtaining a copy of this
- software and associated documentation files (the "Software"), to deal in the Software
- without restriction, including without limitation the rights to use, copy, modify, merge,
- publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to
- whom the Software is furnished to do so, subject to the following conditions:
+License: BSD-3-clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
  .
- The above copyright notice including the dates of first publication and either this
- permission notice or a reference to http://oss.sgi.com/projects/FreeB/ shall be included in
- all copies or substantial portions of the Software.
+ Redistributions of source code must retain the above copyright
+ notice, this list of conditions and the following disclaimer.
+ .
+ Redistributions in binary form must reproduce the above copyright
+ notice, this list of conditions and the following disclaimer in the
+ documentation and/or other materials provided with the distribution.
+ .
+ Neither the name of the original author; nor the names of any contributors
+ may be used to endorse or promote products derived from this software
+ without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER
+ OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+License: SGI-Free-Software-License-B-2.0
+ SGI FREE SOFTWARE LICENSE B (Version 2.0, Sept. 18, 2008)
+ Copyright (C) [dates of first publication] Silicon Graphics, Inc. All Rights
+ Reserved.  Permission is hereby granted, free of charge, to any person
+ obtaining a copy of this software and associated documentation files (the
+ "Software"), to deal in the Software without restriction, including without
+ limitation the rights to use, copy, modify, merge, publish, distribute,
+ sublicense, and/or sell copies of the Software, and to permit persons to whom
+ the Software is furnished to do so, subject to the following conditions:
+ .
+ The above copyright notice including the dates of first publication and either
+ this permission notice or a reference to http://oss.sgi.com/projects/FreeB/
+ shall be included in all copies or substantial portions of the Software.
  .
  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
@@ -130,9 +199,10 @@ License: SGI-FreeB
  IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  IN THE SOFTWARE.
  .
- Except as contained in this notice, the name of Silicon Graphics, Inc. shall not be used in
- advertising or otherwise to promote the sale, use or other dealings in this Software
- without prior written authorization from Silicon Graphics, Inc.
+ Except as contained in this notice, the name of Silicon Graphics, Inc. shall
+ not be used in advertising or otherwise to promote the sale, use or other
+ dealings in this Software without prior written authorization from Silicon
+ Graphics, Inc.
 
 License: LGPL-2.1+
  This library is free software; you can redistribute it and/or
@@ -166,8 +236,8 @@ License: Expat
  IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 Comment:
- This license also known as "MIT" however FSF consider "MIT" labelling
- ambiguous and copyright-format specification recommend to label such license
+ This license is also known as "MIT" however FSF considers "MIT" labelling
+ ambiguous and copyright-format specification recommend to label such a license
  as "Expat".
 
 License: BSL-1.0
@@ -194,6 +264,22 @@ License: BSL-1.0
  FOR ANY DAMAGES OR OTHER LIABILITY, WHETHER IN CONTRACT, TORT OR OTHERWISE,
  ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
  DEALINGS IN THE SOFTWARE.
+
+License: Zlib
+ This software is provided 'as-is', without any express or implied warranty.
+ In no event will the authors be held liable for any damages arising from
+ the use of this software.
+ Permission is granted to anyone to use this software for any purpose,
+ including commercial applications, and to alter it and redistribute it
+ freely, subject to the following restrictions:
+ .
+ 1. The origin of this software must not be misrepresented; you must not
+    claim that you wrote the original software. If you use this software in
+    a product, an acknowledgment in the product documentation would be
+    appreciated but is not required.
+ 2. Altered source versions must be plainly marked as such, and must not be
+    misrepresented as being the original software.
+ 3. This notice may not be removed or altered from any source distribution.
 
 License: CC-BY-SA-3.0
  Creative Commons Attribution-ShareAlike 3.0 Unported
