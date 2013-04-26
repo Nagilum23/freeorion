@@ -3,3 +3,4 @@ GG_verbose_build.patch
 desktop-file.patch
 path_to_cfg.patch
 spelling.patch
+display-correct-FreeOrion-version.patch

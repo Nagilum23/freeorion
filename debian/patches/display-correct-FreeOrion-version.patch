@@ -1,0 +1,36 @@
+From: Markus Koschany <apo@gambaru.de>
+Date: Fri, 26 Apr 2013 19:15:43 +0200
+Subject: display correct FreeOrion version
+
+Display the correct version string for FreeOrion.
+
+Forwarded: not-needed
+
+---
+ FreeOrion/CMakeLists.txt |    6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/FreeOrion/CMakeLists.txt b/FreeOrion/CMakeLists.txt
+index 9a4eaf5..ca505de 100644
+--- a/FreeOrion/CMakeLists.txt
++++ b/FreeOrion/CMakeLists.txt
+@@ -8,8 +8,8 @@ set(CMAKE_VERBOSE_MAKEFILE false)
+ ########################################
+ project(FreeOrion)
+ 
+-set(FREEORION_VERSION 0.4.1)
+-set(FREEORION_RELEASE false)
++set(FREEORION_VERSION 0.4.2)
++set(FREEORION_RELEASE true)
+ 
+ list(APPEND CMAKE_MODULE_PATH ${CMAKE_HOME_DIRECTORY}/cmake ${CMAKE_HOME_DIRECTORY}/GG/cmake)
+ include(Config)
+@@ -92,7 +92,7 @@ endif()
+ 
+ 
+ find_package(Subversion)
+-set(svn_revision_number ???)
++set(svn_revision_number 5771)
+ set(tmpLANG $ENV{LANG})
+ set(tmpLC_ALL $ENV{LC_ALL})
+ set(ENV{LANG} "C")
