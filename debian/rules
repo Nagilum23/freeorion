@@ -14,12 +14,12 @@ override_dh_clean:
 
 override_dh_auto_configure:
 	dh_auto_configure --sourcedirectory=FreeOrion/GG -- \
-			-DBUILD_DOCUMENTATION=off \
-			-DBUILD_TUTORIALS=off \
-			-DBUILD_OGRE_DRIVER=ON \
-			-DBUILD_OGRE_OIS_PLUGIN=ON \
-			-DLIB_SUFFIX=/freeorion \
-			-DCMAKE_SHARED_LINKER_FLAGS="-lltdl -Wl,--as-needed $(LDFLAGS)"
+		-DBUILD_DOCUMENTATION=off \
+		-DBUILD_TUTORIALS=off \
+		-DBUILD_OGRE_DRIVER=ON \
+		-DBUILD_OGRE_OIS_PLUGIN=ON \
+		-DLIB_SUFFIX=/freeorion \
+		-DCMAKE_SHARED_LINKER_FLAGS="-lltdl -Wl,--as-needed $(LDFLAGS)"
 	dh_auto_build     --sourcedirectory=FreeOrion/GG
 	dh_auto_install   --sourcedirectory=FreeOrion/GG --destdir=$(CURDIR)
 	dh_auto_test      --sourcedirectory=FreeOrion/GG
@@ -49,7 +49,7 @@ override_dh_install:
               debian/freeorion-data/usr/share/games/freeorion/default/COPYING
 	## use the correct path to the Ogre 1.8 installation
 	sed -i 's:PluginFolder=\.:PluginFolder=/usr/lib/$(DEB_HOST_MULTIARCH)/OGRE-1.8.0:' \
-			$(CURDIR)/debian/$(PKG)/usr/lib/$(PKG)/ogre_plugins.cfg
+		$(CURDIR)/debian/$(PKG)/usr/lib/$(PKG)/ogre_plugins.cfg
 
 override_dh_python2:
 	dh_python2 -pfreeorion-data /usr/share/games
