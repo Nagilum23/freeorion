@@ -11,6 +11,7 @@ Comment:
 
 Files: *.png
        *.wav
+       *.ogg
        *.txt
        *.mesh
        *.frag
